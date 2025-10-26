@@ -67,7 +67,12 @@ module.exports = withContentlayer(withBundleAnalyzer({
         protocol: 'https',
         hostname: 'picsum.photos',
       },
+      {
+        protocol: 'https',
+        hostname: 'static.wixstatic.com',
+      },
     ],
+    formats: ['image/avif', 'image/webp'],
     unoptimized,
   },
   async headers() {

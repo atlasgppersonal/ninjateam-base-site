@@ -93,6 +93,39 @@ function createSearchIndex(allBlogs) {
   }
 }
 
+export const Service = defineDocumentType(() => ({
+  name: 'Service',
+  filePathPattern: 'services/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    price: { type: 'string', required: false },
+    duration: { type: 'string', required: false },
+    image: { type: 'string', required: true },
+    benefits: { type: 'list', of: { type: 'string' } },
+    process: { type: 'list', of: { type: 'string' } },
+    contraindications: { type: 'list', of: { type: 'string' } }
+  },
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (doc) => `/services/${doc._raw.flattenedPath.replace('services/', '')}`
+    }
+  }
+}))
+
+export const About = defineDocumentType(() => ({
+  name: 'About',
+  filePathPattern: 'about/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    image: { type: 'string', required: false }
+  }
+}))
+
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/**/*.mdx',
@@ -151,7 +184,7 @@ export default makeSource({
   contentDirPath: 'data',
   contentDirInclude: [], // Include all files by default
   contentDirExclude: ['references-data.bib'], // Exclude .bib files
-  documentTypes: [Blog, Authors],
+  documentTypes: [Blog, Authors, Service, About],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
