@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+<<<<<<< HEAD
         primary: {
           50: '#f0fdf4',
           100: '#dcfce7',
@@ -39,6 +40,16 @@ module.exports = {
       fontFamily: {
         sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['ui-serif', 'Georgia', 'serif'],
+=======
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        neutral: 'rgb(var(--color-neutral) / <alpha-value>)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
+>>>>>>> c1a7ab788dc5416bd7eb7445bdf486f82785f64d
       },
     },
   },
